@@ -30,6 +30,10 @@ class Command(BaseCommand):
 
         if not model:
             raise CommandError(f'Model "{model_name}" not found in any app!')
+        
+        # compare csv header with model's field names
+        # get all the field names of the model that we found
+        model_fields = []
 
         with open(file_path, "r") as file:
             reader = csv.DictReader(file)
